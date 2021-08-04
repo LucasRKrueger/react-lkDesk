@@ -17,7 +17,7 @@ const SignIn = () => {
             <img src={logo} alt="System logo"/>
           </div>
           <form onSubmit={handleSubmit}>
-            <h1>SignIn</h1>
+            <h1>Sign In</h1>
             <input type="text" placeholder="email@email.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <input type="password" placeholder="*******" value={password} onChange={(e) => setPassword(e.target.value)}/>
             <button type="submit">Access</button>

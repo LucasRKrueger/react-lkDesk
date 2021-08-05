@@ -10,9 +10,7 @@ const RouterWrapper = ({
     const {signed, loading} = useContext(AuthContext);
 
     if(loading){
-        return (
-            <div></div>
-        )
+        return (<div></div>)
     }
     if(!signed && isPrivate){
         return <Redirect to="/" />

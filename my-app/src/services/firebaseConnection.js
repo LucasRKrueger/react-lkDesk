@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import'firebase/auth';
-
+import 'firebase/firestore'
 let firebaseConfig = {
     apiKey: "AIzaSyA135aqNNCWvYsLjN30McdbhC6Uoep72Kc",
     authDomain: "lkdesk.firebaseapp.com",
@@ -12,3 +12,5 @@ let firebaseConfig = {
 
 if(!firebase.apps.length)
     firebase.initializeApp(firebaseConfig);
+
+export default firebase;

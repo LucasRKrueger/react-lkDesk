@@ -8,7 +8,7 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('')
 
-    const {signUp} = useContext(AuthContext)
+    const {signUp, loadingAuth} = useContext(AuthContext)
 
     function handleSubmit(e){
       e.preventDefault();
@@ -28,7 +28,7 @@ const SignUp = () => {
             <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} />
             <input type="text" placeholder="email@email.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <button type="submit">Create new Account</button>
+            <button type="submit">{loadingAuth  ? 'Loading...' : 'Create new Account'}</button>
           </form>
           <Link to="/">Already have an Account? Click here</Link>
         </div>

@@ -17,13 +17,13 @@ const Header = () => {
             </div>
             <Link to="/dashboard">
                 <FiHome color="black" size={24}/>
-                Ticket
+                Tickets
             </Link>
-            <Link to="/dashboard">
+            <Link to="/customers">
                 <FiUser color="black" size={24}/>
-                Clients
+                Customers
             </Link>
-            <Link to="/dashboard">
+            <Link to="/profile">
                 <FiSettings color="black" size={24}/>
                 Settings
             </Link>

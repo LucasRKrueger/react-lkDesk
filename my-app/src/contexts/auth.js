@@ -43,6 +43,7 @@ const AuthProvider = ({children}) => {
         })
         .catch((error) =>{
             console.log(error);
+            setLoadingAuth(false);
             toast.error('Ops! There is something wrong.')
         })
     }

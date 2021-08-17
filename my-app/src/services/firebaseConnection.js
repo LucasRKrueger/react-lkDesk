@@ -1,6 +1,8 @@
 import firebase from "firebase";
 import'firebase/auth';
 import 'firebase/firestore'
+import 'firebase/storage'
+
 let firebaseConfig = {
     apiKey: "AIzaSyA135aqNNCWvYsLjN30McdbhC6Uoep72Kc",
     authDomain: "lkdesk.firebaseapp.com",

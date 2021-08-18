@@ -13,7 +13,7 @@ const Header = () => {
     return(
         <div className="sidebar">
             <div>
-                <img src={user.avatarUrl === null ? avatar : user.avatarUrl} alt="Avatar Photo"/>
+                <img src={user.avatarUrl === null ? avatar : user.avatarUrl} alt="Avatar"/>
             </div>
             <Link to="/dashboard">
                 <FiHome color="black" size={24}/>

@@ -33,7 +33,7 @@ const Profile = () =>{
 
     async function handleUpload(){
         const currentUid = user.uid;
-        const uploadTask = await firebase.storage()
+        await firebase.storage()
         .ref(`images/${currentUid}/${imageAvatar.name}`)
         .put(imageAvatar)
         .then(async ()=>{
@@ -97,9 +97,9 @@ const Profile = () =>{
                             </span>
                             <input type="file" accept="image/*" onChange={handleFile}/><br/>
                             {avatarUrl === null ?
-                            <img src={avatar} width="250" height="250" alt="User Photo"/> 
+                            <img src={avatar} width="250" height="250" alt="User"/> 
                             :
-                            <img src={avatarUrl} width="250" height="250" alt="User Photo"/>
+                            <img src={avatarUrl} width="250" height="250" alt="User"/>
                             }
                         </label>
 
@@ -107,7 +107,7 @@ const Profile = () =>{
                         <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
 
                         <label>Email</label>
-                        <input type="text" value={email} onChange={(e) => setName(e.target.value)} disabled={true}/>
+                        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} disabled={true}/>
 
                         <button type="submit">Save</button>
                     </form>

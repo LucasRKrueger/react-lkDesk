@@ -51,7 +51,7 @@ const Dashboard = () =>{
                                             <FiSearch color="#fff" size={17}/>
                                         </button>
                                         <button className="action" style={{backgroundColor: '#f6a935'}}>
-                                            <FiSearch color="#fff" size={17}/>
+                                            <FiEdit2 color="#fff" size={17}/>
                                         </button>
                                     </td>
                                 </tr>

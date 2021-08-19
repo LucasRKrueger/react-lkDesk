@@ -28,7 +28,7 @@ const Customers = () => {
                 setAddress('');
                 toast.success('Customer successfully registered!')
             })
-            .catch((error) =>{
+            .catch(() =>{
                 toast.error('An error has occurred!')
             })
         } else {

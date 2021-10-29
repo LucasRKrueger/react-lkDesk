@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Title from "../../components/Title";
+import Modal from "../../components/Modal";
 import './dashboard.css'
 import { FiMessageSquare, FiPlus, FiSearch, FiEdit2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -15,7 +16,23 @@ const Dashboard = () =>{
     const [loadingMore, setLoadingMore] = useState(false);
     const [isEmpty, setIsEmpty] = useState(false);
     const [lastDocs, setLastDocs] = useState();
+    const [showPostModal, setShowPostModal] = useState(false)
+    const [detail, setDetail] = useState()
+
     useEffect(() => {
+
+        async function loadTickets(){
+            await listRef.limit(5)
+            .get()
+            .then((snapshot) => {
+                updateState(snapshot)
+            })
+            .catch((err) =>{
+                setLoadingMore(false)
+                console.log(err)
+            })
+            setLoading(false);
+        }
 
         loadTickets();
 
@@ -23,25 +40,20 @@ const Dashboard = () =>{
 
         }
     }, [])
-
-    async function loadTickets(){
-        await listRef.limit(5)
-        .get()
-        .then((snapshot) => {
-            updateState(snapshot)
-        })
-        .catch((err) =>{
-            setLoadingMore(false)
-        })
-        setLoading(false);
-    }
+   
 
     async function handleMore(){
         setLoadingMore(true);
         await listRef.startAfter(lastDocs).limit(5)
+        .get()
         .then((snapshot) =>{
             updateState(snapshot);
         })
+    }
+
+    function togglePostModal(item){
+        setShowPostModal(!showPostModal)
+        setDetail(item)
     }
 
     async function updateState(snapshot){
@@ -127,12 +139,12 @@ const Dashboard = () =>{
                                     <td data-label="Status"><span className="badge" style={{backgroundColor: '#5cb85c'}}>{item.status}</span></td>
                                     <td data-label="CreatedOn">{item.createdOn}</td>
                                     <td data-label="#">
-                                        <button className="action" style={{backgroundColor: '#3586f6'}}>
+                                        <button onClick={() => togglePostModal(item)} className="action" style={{backgroundColor: '#3586f6'}}>
                                             <FiSearch color="#fff" size={17}/>
                                         </button>
-                                        <button className="action" style={{backgroundColor: '#f6a935'}}>
+                                        <Link className="action" style={{backgroundColor: '#f6a935'}} to={`/new/${item.id}`}>
                                             <FiEdit2 color="#fff" size={17}/>
-                                        </button>
+                                        </Link>
                                     </td>
                                 </tr>
                                     )
@@ -146,6 +158,10 @@ const Dashboard = () =>{
                 )}
                             
             </div>
+            {showPostModal && (
+                <Modal content={detail} close={togglePostModal}/>
+            )}
+            
         </div>
     )
 }
